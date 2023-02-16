@@ -200,29 +200,22 @@ class SpreadsheetGrid extends React.PureComponent {
   }
 
   onGlobalClick() {
-    this.setState({
-      activeCell: null,
-      focusedCell: null,
-    })
-    console.log('test test');
-    // if (!this.skipGlobalClick) {
-    // } else {
-    //   this.skipGlobalClick = false
-    // }
+    if (!this.skipGlobalClick) {
+      this.setState({
+        activeCell: null,
+        focusedCell: null,
+      })
+    } else {
+      this.skipGlobalClick = false
+    }
   }
 
   onCellClick(x, y, row, columnId, e) {
     if (!find(this.props.disabledCells, { x, y })) {
-      if (!e.skipCellClick && !isEqual(this.state.focusedCell, { x, y })) {
-        this.setState({
-          focusedCell: this.props.focusOnSingleClick
-            ? { x, y }
-            : e.target !== e.currentTarget
-            ? { x, y }
-            : null,
-          activeCell: { x, y },
-        })
-      }
+      this.setState({
+        focusedCell: { x, y },
+        activeCell: { x, y },
+      })
     }
 
     if (this.props.onCellClick) {
