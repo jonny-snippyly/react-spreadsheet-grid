@@ -204,7 +204,7 @@ class SpreadsheetGrid extends React.PureComponent {
       activeCell: null,
       focusedCell: null,
     })
-    console.log('test test')
+    console.log('test test');
     // if (!this.skipGlobalClick) {
     // } else {
     //   this.skipGlobalClick = false
